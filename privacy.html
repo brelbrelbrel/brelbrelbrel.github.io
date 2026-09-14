@@ -15,10 +15,10 @@
 <body>
     <main>
         <h1>反復太郎 プライバシーポリシー</h1>
-        <p class="updated">最終更新日: 2026年7月27日</p>
+        <p class="updated">最終更新日: 2026年9月15日</p>
 
         <h2>対象</h2>
-        <p>本ポリシーは反復太郎 Android版のデモ版、販売版、Google Play配布版、およびDebianから直接配布するsideload APKに適用されます。</p>
+        <p>本ポリシーは反復太郎のAndroid版、デスクトップ版、デモ版、販売版、Google Play配布版、および開発者が運営する配布ページから提供する版に適用されます。</p>
 
         <h2>端末内で扱うデータ</h2>
         <p>利用者が選択した音源またはMP4動画、作成したパターン、ループ位置、テンポ、シーケンス、設定、端末内で生成した4パートの分離音源を、アプリの動作と保存のために端末内で扱います。利用者が録画を開始した場合は、カメラ映像とマイクまたはUSBオーディオ入力を別トラックとして端末内に保存し、元音源への参照、開始位置・累積ずれ・音量の補正値、端末内で作成したミックス音源も扱います。</p>
@@ -36,6 +36,20 @@
 
         <h2>権限とファイルアクセス</h2>
         <p>音源またはMP4動画はAndroidのシステムファイル選択画面から、利用者が明示的に選択したファイルだけを読み込みます。連絡先、位置情報、写真一覧への権限は要求しません。カメラ権限は録画映像に、マイク権限は録画中の別トラック音声にだけ使用します。録画中であることは画面上のカメラプレビューと停止ボタンで表示します。長時間の音源分離中は処理の進捗と中止操作を通知に表示します。Android 13以降で通知を許可しない場合でも、アプリ内の分離状態は確認できます。</p>
+
+
+        <h2>GoogleアカウントデータとYouTube投稿（デスクトップ版のみ）</h2>
+        <p>デスクトップ版で利用者が「YouTube限定公開」ボタンを押した場合だけ、Google OAuthを開始します。Googleから取得する権限はYouTube Data API v3の <code>https://www.googleapis.com/auth/youtube.upload</code> だけです。Gmail、Googleドライブ、連絡先、位置情報、閲覧履歴、YouTubeの視聴履歴やチャンネル一覧は取得しません。</p>
+        <p>この権限は、利用者が選んだ自分のYouTubeチャンネルへ、保存済みのミックス動画をアップロードするために使います。アップロード時には、利用者が保存した音声、アプリが作成した動画タイトルと説明文をYouTubeへ送信します。公開状態は限定公開（unlisted）です。利用者がボタンを押さない限り、音声や動画をYouTubeへ送信しません。</p>
+        <p>アップロード処理中だけ、保存済みミックスをHTTPSで開発者サーバーへ送り、YouTube用の一時動画へ変換します。一時ファイルは処理終了時に削除し、開発者サーバーへ録音作品を継続保存しません。YouTube側で作成された動画は利用者のGoogleアカウントで管理されます。</p>
+
+        <h2>Googleデータの利用目的と保護</h2>
+        <p>Googleユーザーデータは、上記のYouTube動画投稿と投稿結果の確認にのみ利用します。認証トークンはYouTube API専用のサーバー上のファイルに保存し、リポジトリ、画面表示、ログ、第三者サービスへ出力しません。トークンファイルはサービス実行ユーザーだけが読めるようにアクセス権を制限し、通信はHTTPSで暗号化します。認証情報は他のGoogle API呼び出しや広告・分析目的には利用しません。利用者はGoogleアカウントの「第三者アプリとの接続」からいつでも権限を取り消せます。</p>
+
+        <h2>Google user data and YouTube upload (desktop only)</h2>
+        <p>The desktop app starts Google OAuth only after the user presses “YouTube限定公開”. The only requested scope is <code>https://www.googleapis.com/auth/youtube.upload</code>. The app does not access Gmail, Drive, contacts, location, browsing history, YouTube watch history, or channel lists.</p>
+        <p>The scope is used only to upload the user’s saved mix video to the user’s own YouTube channel. The saved audio, generated title, and description are sent to YouTube when the user explicitly starts the upload. The video is uploaded as unlisted. No audio or video is sent to YouTube before that action.</p>
+        <p>During the upload request, the saved mix is sent over HTTPS to the developer server only for temporary video conversion and is deleted when processing finishes. OAuth tokens are stored only in a server file restricted to the service account; they are not placed in source control, logs, or third-party services. Tokens are used only for the YouTube upload API and can be revoked from the user’s Google Account settings.</p>
 
         <h2>保存期間と削除</h2>
         <p>練習データ、録画映像、マイク録音、録画プロジェクト、ミックス、分離結果は利用者が削除するまで端末内に保存されます。アプリ内のファイル管理から対象データを削除できます。録画プロジェクトを削除すると対応する映像とマイクトラックも削除されます。音源の登録を解除すると、その音源に対応するアプリ管理下の分離結果も削除されます。アプリをアンインストールするとアプリ管理領域のデータは削除されますが、利用者が元から所有する音源ファイルや、利用者が外部へ保存・共有したファイルは削除されません。</p>
